@@ -1,17 +1,12 @@
 package banco;
 
-public class ContaPoupanca extends Conta {
+public class ContaPoupanca extends Conta implements Investimento{
 
 	public ContaPoupanca(int numConta, String nomeTitular, String cpfTitular, double saldo) {
 		super(numConta, cpfTitular, nomeTitular, saldo);
 		this.numConta = numConta;
-		this.saldo = saldo;
+		reajuste(saldo);
 		this.titular = new Cliente(nomeTitular, cpfTitular);
-		reajustar(1.10);
-	}
-
-	public void reajustar(double percentual) {
-		saldo = saldo + (saldo * percentual);
 	}
 
 	@Override
@@ -27,5 +22,10 @@ public class ContaPoupanca extends Conta {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public void reajuste(double saldo) {
+		this.saldo += saldo * 0.5;
 	}
 }
