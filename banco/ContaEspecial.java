@@ -9,6 +9,15 @@ public class ContaEspecial extends Conta {
 		this.titular = new Cliente(nomeTitular, cpfTitular);
 		this.limite = 200;
 	}
+	
+	public ContaEspecial(String titular,String saldo, String limite) {
+		super(titular, saldo, limite);
+		this.numConta = numConta + 1;
+		this.titular.setNome(titular);
+		this.saldo = Double.parseDouble(saldo);
+		this.limite = Double.parseDouble(limite);
+		
+	}
 
 	public double getLimite() {
 		return limite;

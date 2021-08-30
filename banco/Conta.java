@@ -10,6 +10,9 @@ public abstract  class Conta {
 		this.saldo = saldo;
 		this.titular = new Cliente(nomeTitular, cpfTitular);
 	}
+	 public Conta(String titular2, String saldo2, String limite) {
+		
+	}
 	public Cliente getTitular() {
 		return titular;
 	}
