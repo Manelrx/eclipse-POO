@@ -1,9 +1,12 @@
 package banco;
+import programa.CriarConta;
 
 public abstract  class Conta {
+	CriarConta verifica;
 	protected Cliente titular;
-	protected int numConta;
+	protected int numConta = 0;
 	protected double saldo;
+	private Conta enviar;
 	
 	public Conta (int numConta, String nomeTitular, String cpfTitular, double saldo) {
 		this.numConta = numConta;
@@ -36,5 +39,18 @@ public abstract  class Conta {
 	public String ImprimirTipoConta(String texto) {
 		return "Conta Comum "+ texto; 
 	}
+	
+	public Conta EncontraConta(String num) {	
+		int numConta = Integer.parseInt(num);
+		Conta enviar;
+		for (int i = 0; i < verifica.contas.size(); i++) {
+			if(numConta == verifica.contas.get(i).numConta) {
+				this.enviar = verifica.contas.get(i);
+			}else {
+				this.enviar = null;
+			}
+		} return this.enviar;
+	}
+		
 	
 }

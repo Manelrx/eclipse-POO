@@ -8,6 +8,10 @@ public class Cliente {
 		this.setNome(nome);
 		this.setCpf(cpf);
 	}
+	
+	public Cliente(String nome) {
+		this.setNome(nome);
+	}
 
 	public String getNome() {
 		return nome;

@@ -10,10 +10,10 @@ public class ContaEspecial extends Conta {
 		this.limite = 200;
 	}
 	
-	public ContaEspecial(String titular,String saldo, String limite) {
-		super(titular, saldo, limite);
-		this.numConta = numConta + 1;
-		this.titular.setNome(titular);
+	public ContaEspecial(int numConta, String nomeTitular,String saldo, String limite) {
+		super(nomeTitular, saldo, limite);
+		this.numConta = numConta;
+		this.titular = new Cliente(nomeTitular);
 		this.saldo = Double.parseDouble(saldo);
 		this.limite = Double.parseDouble(limite);
 		
