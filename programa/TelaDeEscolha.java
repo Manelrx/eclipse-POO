@@ -1,12 +1,12 @@
 package programa;
 import java.awt.*;
-import programa.CriarConta;
 import java.awt.event.*;
 import javax.swing.*;
 import banco.Conta;
+import banco.ContaEspecial;
 
 public class TelaDeEscolha extends JFrame implements ActionListener {
-	Conta auxiliar;
+	ContaEspecial auxiliar = new ContaEspecial();
 
 	private JLabel l1;
 	private JTextField t1;
@@ -39,11 +39,24 @@ public class TelaDeEscolha extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.voltar) {
-			
+			this.dispose();
+			CriarConta.executaCriaConta();
 		} else if (e.getSource() == this.acessarConta) {
-			if(auxiliar.EncontraConta(t1.getText()) == null){
-				JOptionPane.showMessageDialog(null, "Erro ao encontrar conta","Conta não localizada", JOptionPane.INFORMATION_MESSAGE);
+			Conta contaInformada = auxiliar.EncontraConta(t1.getText());
+			if(contaInformada == null){
+				JOptionPane.showMessageDialog(null, "Erro ao encontrar conta","Conta não localizada", JOptionPane.ERROR_MESSAGE);
+			}else {
+				String c = "Conta n° " + contaInformada.getNumConta() + " Titular: " + contaInformada.getTitular().getNome() + " Saldo: " + contaInformada.getSaldo();
+				JOptionPane.showMessageDialog(null, c, "Saldo Solicitado", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}
+		
+		public static void executar() {
+			JFrame tela = new TelaDeEscolha();
+			tela.setUndecorated(true);
+			tela.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+			tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			tela.setVisible(true);
+		}
 }

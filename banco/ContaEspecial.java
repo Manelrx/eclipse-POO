@@ -19,6 +19,10 @@ public class ContaEspecial extends Conta {
 		
 	}
 
+	public ContaEspecial() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public double getLimite() {
 		return limite;
 	}

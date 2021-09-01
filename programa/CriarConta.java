@@ -3,7 +3,6 @@ package programa;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.swing.*;
 
@@ -11,12 +10,11 @@ import banco.Conta;
 import banco.ContaEspecial;
 
 public class CriarConta extends JFrame implements ActionListener {
-	public 	ArrayList<Conta> contas = new ArrayList<Conta>();
+	public static ArrayList<Conta> contas = new ArrayList<Conta>();
 
 	private JLabel l1, l2, l3;
 	private JTextField t1, t2, t3;
 	private JButton b1, b2;
-	private JPanel painel;
 
 	public CriarConta() {
 		this.l1 = new JLabel("Titular: ", JLabel.CENTER);
@@ -61,23 +59,21 @@ public class CriarConta extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, s, "Conta Criada", JOptionPane.INFORMATION_MESSAGE);
 			contas.add(conta);
 		} else if (e.getSource() == this.b2) {
-			String s = "";
-			for (int i = 0; i < contas.size(); i++) {
-				s += "Conta nº " + contas.get(i).getNumConta() + " Titular: " + contas.get(i).getTitular().getNome() + "Saldo: R$"
-						+ contas.get(i).getSaldo() + "\n";
-			}
-
-			JOptionPane.showMessageDialog(null, s, " Contas", JOptionPane.INFORMATION_MESSAGE);
+			this.dispose();
+			TelaDeEscolha.executar();
 		}
 	}
 
 	public static void main(String[] args) {
+		executaCriaConta();
+
+	}
+	public static void executaCriaConta() {
 		JFrame janela = new CriarConta();
 		janela.setUndecorated(true);
 		janela.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
-
 	}
 
 }

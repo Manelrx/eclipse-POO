@@ -2,11 +2,16 @@ package banco;
 import programa.CriarConta;
 
 public abstract  class Conta {
-	CriarConta verifica;
+	Conta enviar;
+	boolean valida;
+	int guarda;
 	protected Cliente titular;
 	protected int numConta = 0;
 	protected double saldo;
-	private Conta enviar;
+	
+	public Conta() {
+		
+	}
 	
 	public Conta (int numConta, String nomeTitular, String cpfTitular, double saldo) {
 		this.numConta = numConta;
@@ -42,15 +47,12 @@ public abstract  class Conta {
 	
 	public Conta EncontraConta(String num) {	
 		int numConta = Integer.parseInt(num);
-		Conta enviar;
-		for (int i = 0; i < verifica.contas.size(); i++) {
-			if(numConta == verifica.contas.get(i).numConta) {
-				this.enviar = verifica.contas.get(i);
-			}else {
-				this.enviar = null;
+		for (int i = 0; i < CriarConta.contas.size(); i++) {
+			if(numConta == CriarConta.contas.get(i).getNumConta()) {
+				enviar = CriarConta.contas.get(i);
+				System.out.println("Validou");
 			}
-		} return this.enviar;
+		} 
+		return enviar;
 	}
-		
-	
 }
