@@ -5,6 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import programa.CriarConta;
 
+
+// https://www.devmedia.com.br/construindo-janelas-com-swing/5752
 public class MenuApp extends JFrame implements ActionListener {
 	JMenuBar menuBar;
 	JMenu menuConta, menuOperacoes;
@@ -51,10 +53,15 @@ public class MenuApp extends JFrame implements ActionListener {
 		this.sair.addActionListener(this);
 	}
 	
-	public static void main (String[] args) {
-		executaPrograma();
+	public void instanciaJPanel() {
+		MenuApp telaPrincipalApp = new MenuApp();
+		this.getContentPane().add(telaPrincipalApp);
 	}
-
+	
+	public static void main (String[] args) {
+		//executaPrograma();
+		new MenuApp();
+	}
 	
 	public static void executaPrograma() {
 		JFrame telaPrincipal = new MenuApp();

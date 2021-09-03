@@ -36,9 +36,8 @@ public class CriarConta extends JFrame implements ActionListener, ItemListener {
 		this.setLocation(50, 50);
 		this.getContentPane().setBackground(new Color(100, 180, 180));
 		
-		this.montarLayout();
 		this.setarAtributosEscolheConta();
-		
+		this.adicionarItemListener();
 	}
 	
 	private void setarAtributosEscolheConta() {
@@ -46,18 +45,29 @@ public class CriarConta extends JFrame implements ActionListener, ItemListener {
 		this.escolheConta.add(contaPoupanca);
 	}
 
-	private void montarLayout() {
-		this.getContentPane().setLayout(new GridLayout(5, 2));
-		this.getContentPane().add(contaEspecial);
-		this.getContentPane().add(contaPoupanca);
-		
-		this.getContentPane().add(this.b2);
-		this.b2.addActionListener(this);
-		this.getContentPane().add(this.b1);
-		this.b1.addActionListener(this);
-		
+	private void adicionarItemListener() {
+		this.contaEspecial.addItemListener(this);
+		this.contaEspecial.addItemListener(this);
 	}
 	
+	private void montarLayout() {
+			this.setSize(300, 300);
+			this.setLocation(50, 50);
+			this.getContentPane().setBackground(new Color(100, 180, 180));
+			this.getContentPane().setLayout(new GridLayout(7, 2));
+			this.getContentPane().add(contaEspecial);
+			this.getContentPane().add(contaPoupanca);
+			this.getContentPane().add(this.b2);
+			this.b2.addActionListener(this);
+			this.getContentPane().add(this.b1);
+			this.b1.addActionListener(this);
+			this.getContentPane().add(this.l1);
+			this.getContentPane().add(this.t1);
+			this.getContentPane().add(this.l2);
+			this.getContentPane().add(this.t2);
+			this.getContentPane().add(this.l3);
+			this.getContentPane().add(this.t3);
+	}
 	
 
 	@Override
@@ -77,14 +87,6 @@ public class CriarConta extends JFrame implements ActionListener, ItemListener {
 	public static void main(String[] args) {
 		executaCriaConta();
 	}
-	public void teste() {
-		this.getContentPane().add(this.l1);
-		this.getContentPane().add(this.t1);
-		this.getContentPane().add(this.l2);
-		this.getContentPane().add(this.t2);
-		this.getContentPane().add(this.l3);
-		this.getContentPane().add(this.t3);
-	}
 	
 	public static void executaCriaConta() {
 		JFrame janela = new CriarConta();
@@ -97,7 +99,7 @@ public class CriarConta extends JFrame implements ActionListener, ItemListener {
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getSource() == this.contaEspecial) {
-			JOptionPane.showMessageDialog(null, "teste", "Conta Criada", JOptionPane.INFORMATION_MESSAGE);
+			this.montarLayout();
 		}else if(e.getSource() == this.contaPoupanca) {
 			
 		}
