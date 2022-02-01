@@ -1,4 +1,4 @@
-Foi criado a duas janelas
+Foi criado duas janelas
 
 1ª para a criação de contas com dois botões ( Criar Conta, Consultar Conta)
 2ª Para procurar uma conta que já existe com dois botões ( Procurar Conta, Voltar)
